@@ -1,0 +1,14 @@
+import {Meta, Story} from '@storybook/react/types-6-0';
+
+import { {{pascalCase name}} } from '.';
+
+const data = {
+  title: '{{{pascalCase name}}}',
+  component: {{{pascalCase name}}},
+  args: {},
+} as Meta;
+
+export default data;
+
+export const Basic: Story = (args) => <{{{pascalCase name}}} {...args} />;
+
