@@ -1,9 +1,8 @@
 import styled from 'styled-components';
-import {theme} from '../../styles/theme';
 
 export const Wrapper = styled.main`
-  background-color: ${theme.backgroundColor};
-  color: ${theme.secondary.colora};
+  background-color: #06092b;
+  color: #ffffff;
   width: 100%;
   height: 100%;
   padding: 3rem;
