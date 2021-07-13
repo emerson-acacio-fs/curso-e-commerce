@@ -1,10 +1,10 @@
 import {screen} from '@testing-library/react';
-import { {{{pascalCase name}}} } from '.';
+import { Headding } from '.';
 import {renderWithTheme} from '../../utils/tests/helpers';
 
-describe('<{{{pascalCase name}}} />', () => {
+describe('<Headding />', () => {
   it('should render a white label by dfault', () => {
-    renderWithTheme(<{{{pascalCase name}}} />);
+    renderWithTheme(<Headding />);
     expect(screen.getByLabelText(/Won Games/i).parentElement).toHaveStyle({
       color: '#FAFAFA',
     });
