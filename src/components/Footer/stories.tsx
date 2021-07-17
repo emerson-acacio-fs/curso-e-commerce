@@ -10,4 +10,21 @@ const data = {
 
 export default data;
 
-export const Defoult: Story = (args) => <Footer {...args} />;
+export const Mobile: Story = (args) => (
+  <div style={{maxWidth: '130rem', margin: '0 auto'}}>
+    <Footer {...args} />
+  </div>
+);
+
+export const Desktop: Story = (args) => (
+  <div style={{maxWidth: '130rem', margin: '0 auto'}}>
+    <Footer {...args} />
+  </div>
+);
+
+Mobile.parameters = {
+  layout: 'fullscreen',
+  viewport: {
+    defaultViewport: 'mobile1',
+  },
+};

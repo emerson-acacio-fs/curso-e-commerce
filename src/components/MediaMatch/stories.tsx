@@ -9,7 +9,7 @@ const data = {
 
 export default data;
 
-export const Descktop: Story = () => (
+export const Desktop: Story = () => (
   <MediaMatch greaterThan="medium">Only on Desktop</MediaMatch>
 );
 
