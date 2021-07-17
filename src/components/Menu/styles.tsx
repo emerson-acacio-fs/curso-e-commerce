@@ -59,13 +59,14 @@ export const MenuLink = styled.a`
     margin: 0.3rem ${theme.spacings.small} 0;
     text-decoration: none;
     text-align: center;
+
     &:hover {
       &::after {
         content: '';
         display: block;
         height: 0.3rem;
         background-color: ${theme.colors.primary};
-        animation: hoverAnimation 0.3s forwards;
+        animation: hoverAnimation 0.2s forwards;
         position: absolute;
       }
       @keyframes hoverAnimation {
