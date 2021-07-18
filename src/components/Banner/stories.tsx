@@ -16,7 +16,11 @@ const data = {
 
 export default data;
 
-export const Mobile: Story<BannerProps> = (args) => <Banner {...args} />;
+export const Mobile: Story<BannerProps> = (args) => (
+  <div style={{maxWidth: '104rem', margin: '0 auto'}}>
+    <Banner {...args} />
+  </div>
+);
 Mobile.parameters = {
   layout: 'fullscreen',
   viewport: {
@@ -24,7 +28,41 @@ Mobile.parameters = {
   },
 };
 
-export const Desktop: Story<BannerProps> = (args) => <Banner {...args} />;
+export const Desktop: Story<BannerProps> = (args) => (
+  <div style={{maxWidth: '104rem', margin: '0 auto'}}>
+    <Banner {...args} />
+  </div>
+);
 Desktop.parameters = {
   layout: 'fullscreen',
+};
+
+export const WithRibbon: Story<BannerProps> = (args) => (
+  <div style={{maxWidth: '104rem', margin: '0 auto'}}>
+    <Banner {...args} />
+  </div>
+);
+
+WithRibbon.args = {
+  ribbon: '20% OFF',
+  ribbonSize: 'normal',
+  ribbonColor: 'primary',
+};
+
+export const WithRibbonMobile: Story<BannerProps> = (args) => (
+  <div style={{maxWidth: '104rem', margin: '0 auto'}}>
+    <Banner {...args} />
+  </div>
+);
+
+WithRibbonMobile.args = {
+  ribbon: '20% OFF',
+  ribbonSize: 'normal',
+  ribbonColor: 'primary',
+};
+
+WithRibbonMobile.parameters = {
+  viewport: {
+    defaultViewport: 'mobile1',
+  },
 };

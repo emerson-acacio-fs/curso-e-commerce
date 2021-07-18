@@ -3,6 +3,6 @@ import styled,{css} from 'styled-components';
 const wrapperModifiers = {a:1};
 
 
-export const Wrapper{{pascalCase name}} = styled.div`
+export const WrapperHighlight = styled.div`
   ${({theme}) => css``}
 `;

@@ -10598,6 +10598,11 @@ polished@^4.0.5:
   dependencies:
     "@babel/runtime" "^7.14.0"
 
+polisher@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.yarnpkg.com/polisher/-/polisher-0.0.1-security.tgz#55452c6d030d575a35081db5e18c1b7a569a102b"
+  integrity sha512-n2x6HxNmPbiH97Lzr1IQkcsdycwoZN22oHO7nZ9pJd9KLrsN0DouTJCD+mkOXaIOqLDxidxL12dWuUmaNZhVZA==
+
 posix-character-classes@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/posix-character-classes/-/posix-character-classes-0.1.1.tgz#01eac0fe3b5af71a2a6c02feabb8c1fef7e00eab"
