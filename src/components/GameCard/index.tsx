@@ -1,5 +1,10 @@
-import {AddShoppingCart, FavoriteBorder} from '@styled-icons/material-outlined';
+import {
+  AddShoppingCart,
+  FavoriteBorder,
+  Favorite,
+} from '@styled-icons/material-outlined';
 import {Button} from '../Button';
+import {Ribbon} from '../Ribbon';
 
 import * as S from './styles';
 
@@ -9,6 +14,11 @@ export type GameCardProps = {
   img: string;
   price: string;
   promotionalPrice?: string;
+  favorite?: boolean;
+  onFav?: () => void;
+  ribbon?: React.ReactNode;
+  ribbonColor?: RibbonColors;
+  ribbonSize?: RibbonSizes;
 };
 
 export const GameCard = ({
@@ -17,8 +27,18 @@ export const GameCard = ({
   img,
   price,
   promotionalPrice,
+  favorite = false,
+  onFav,
+  ribbon,
+  ribbonColor = 'primary',
+  ribbonSize = 'small',
 }: GameCardProps) => (
   <S.WrapperGameCard>
+    {!!ribbon && (
+      <Ribbon color={ribbonColor} size={ribbonSize}>
+        {ribbon}
+      </Ribbon>
+    )}
     <S.ImageBox>
       <S.Imag src={img} alt={title} />
     </S.ImageBox>
@@ -27,8 +47,12 @@ export const GameCard = ({
         <S.Title>{title}</S.Title>
         <S.Developer>{developer}</S.Developer>
       </S.Info>
-      <S.FavButton role="button">
-        <FavoriteBorder aria-label="Add to Wishlist" />
+      <S.FavButton onClick={onFav} role="button">
+        {favorite ? (
+          <Favorite aria-label="Remove from Wishlist" />
+        ) : (
+          <FavoriteBorder aria-label="Add to Wishlist" />
+        )}
       </S.FavButton>
       <S.BuyBox>
         {!!promotionalPrice && <S.Price isPromotional>{price}</S.Price>}
