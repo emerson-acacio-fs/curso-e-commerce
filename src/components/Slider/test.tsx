@@ -1,7 +1,6 @@
 import '../../../.jest/match-media-mock';
 import {render, screen} from '@testing-library/react';
 import {Slider} from '.';
-import {renderWithTheme} from '../../utils/tests/helpers';
 
 describe('<Slider />', () => {
   it('should render a children as slider item', () => {
