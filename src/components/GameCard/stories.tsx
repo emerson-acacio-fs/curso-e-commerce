@@ -18,7 +18,7 @@ const data = {
   },
   parameters: {
     backgrounds: {
-      default: 'dark',
+      default: 'won-dark',
     },
   },
 } as Meta;
