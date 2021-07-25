@@ -1,6 +1,4 @@
-import styled, {css} from 'styled-components';
-
-const wrapperModifiers = {a: 1};
+import styled from 'styled-components';
 
 export const WrapperSlider = styled.section`
   .slick-slider {

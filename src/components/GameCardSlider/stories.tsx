@@ -1,7 +1,6 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
 
 import {GameCardSlider, GameCardSliderProps} from '.';
-import {GameCardProps} from '../GameCard';
 import items from './mock';
 
 const data = {

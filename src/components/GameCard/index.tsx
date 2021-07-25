@@ -4,7 +4,7 @@ import {
   Favorite,
 } from '@styled-icons/material-outlined';
 import {Button} from '../Button';
-import {Ribbon} from '../Ribbon';
+import {Ribbon, RibbonColors, RibbonSize} from '../Ribbon';
 
 import * as S from './styles';
 
@@ -18,7 +18,7 @@ export type GameCardProps = {
   onFav?: () => void;
   ribbon?: React.ReactNode;
   ribbonColor?: RibbonColors;
-  ribbonSize?: RibbonSizes;
+  ribbonSize?: RibbonSize;
 };
 
 export const GameCard = ({
