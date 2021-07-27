@@ -28,7 +28,7 @@ export const Input = styled.input`
     border-radius: 0.2rem;
     transition: background border ${theme.transition.fast};
     position: relative;
-    /* outline: none; */
+    outline: none;
     &:focus {
       box-shadow: 0 0 0.5rem ${theme.colors.primary};
     }
