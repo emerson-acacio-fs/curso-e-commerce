@@ -1,16 +1,47 @@
-import styled, {css} from 'styled-components';
+import styled, {css, DefaultTheme} from 'styled-components';
+import {TextFieldProps} from '.';
+type WrapperProps = Pick<TextFieldProps, 'disabled'> & {error?: boolean};
+const wrapperModifiers = {
+  disabled: (theme: DefaultTheme) => css`
+    ${Label},
+    ${Input},
+    ${Icon} {
+      cursor: not-allowed;
+      color: ${theme.colors.gray};
+      &::placeholder {
+        color: currentColor;
+      }
+    }
+  `,
+  error: (theme: DefaultTheme) => css`
+    ${InputWrapper} {
+      border-color: ${theme.colors.red};
+    }
+    ${Icon},
+    ${Label} {
+      color: ${theme.colors.red};
+    }
+  `,
+};
 
-const wrapperModifiers = {a: 1};
-
-export const WrapperTextField = styled.div`
-  ${({theme}) => css``}
+export const WrapperTextField = styled.div<WrapperProps>`
+  ${({theme, disabled, error}) => css`
+    ${error && wrapperModifiers.error(theme)}
+    ${disabled && wrapperModifiers.disabled(theme)}
+  `}
+`;
+export const Error = styled.p`
+  ${({theme}) => css`
+    color: ${theme.colors.red};
+    font-size: ${theme.font.sizes.xsmall};
+  `}
 `;
 export const Input = styled.input`
   ${({theme}) => css`
     color: ${theme.colors.black};
     font-family: ${theme.font.family};
     font-size: ${theme.font.sizes.medium};
-    padding: ${theme.spacings.xxsmall} 0;
+    padding: ${theme.spacings.xxsmall};
     background: transparent;
     border: 0;
     outline: none;
@@ -36,6 +67,18 @@ export const InputWrapper = styled.div`
     border-color: ${theme.colors.lightGray};
     &:focus-within {
       box-shadow: 0 0 0.5rem ${theme.colors.primary};
+    }
+  `}
+`;
+type IconPositionProps = Pick<TextFieldProps, 'iconPosition'>;
+export const Icon = styled.div<IconPositionProps>`
+  ${({theme, iconPosition}) => css`
+    display: flex;
+    width: 2.2rem;
+    color: ${theme.colors.gray};
+    order: ${iconPosition === 'right' ? 1 : 0};
+    & > svg {
+      width: 100%;
     }
   `}
 `;

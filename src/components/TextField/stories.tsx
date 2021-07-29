@@ -1,9 +1,9 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
-
+import {Email} from '@styled-icons/material-outlined';
 import {TextField, TextFieldProps} from '.';
 
 const data = {
-  title: 'TextField',
+  title: 'Form/TextField',
   component: TextField,
   args: {
     label: 'E-mail',
@@ -11,6 +11,7 @@ const data = {
     id: 'Email',
     initialValue: '',
     placeholder: 'john.cage@gmail.com',
+    icon: <Email />,
   },
   argTypes: {
     onInput: {action: 'changed'},
