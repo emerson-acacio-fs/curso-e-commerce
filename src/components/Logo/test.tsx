@@ -30,7 +30,11 @@ describe('<Logo />', () => {
       width: '20rem',
     });
   });
+  it('should render the logo with id passed', () => {
+    const {container} = renderWithTheme(<Logo id="myId" />);
 
+    expect(container.querySelector('#paint_linear_myId')).toBeInTheDocument();
+  });
   it('should render a bigger logo without text if hideOnMobile', () => {
     renderWithTheme(<Logo hideOnMobile />);
     expect(screen.getByLabelText(/Won Games/i).parentElement).toHaveStyleRule(
