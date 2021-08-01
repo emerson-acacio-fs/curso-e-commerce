@@ -1,11 +1,15 @@
 import styled, {css} from 'styled-components';
+import {lighten} from 'polished';
 
-const wrapperModifiers = {a: 1};
-
-export const WrapperFormSignIn = styled.div`
-  ${({theme}) => css``}
+export const ForgotPassword = styled.a`
+  ${({theme}) => css`
+    display: block;
+    font-size: ${theme.font.sizes.small};
+    color: ${theme.colors.black};
+    text-decoration: none;
+    text-align: right;
+    &:hover {
+      color: ${lighten(0.2, theme.colors.black)};
+    }
+  `}
 `;
-
-export const ForgotPassword = styled.a``;
-
-export const FormLink = styled.div``;

@@ -3,13 +3,10 @@ import {Email, Lock} from '@styled-icons/material-outlined';
 import {TextField} from '../TextField';
 import * as S from './styles';
 import {Button} from '../Button';
+import {FormLink, FormWrapper} from 'components/Form';
 
-export type FormSignInProps = {
-  a?: string;
-};
-
-export const FormSignIn = (props: FormSignInProps) => (
-  <S.WrapperFormSignIn>
+export const FormSignIn = () => (
+  <FormWrapper>
     <form>
       <TextField
         name="email"
@@ -27,12 +24,12 @@ export const FormSignIn = (props: FormSignInProps) => (
       <Button size="large" fullWidth>
         Sign in now
       </Button>
-      <S.FormLink>
+      <FormLink>
         Don’t have an account?{' '}
         <Link href="/sign-up">
           <a>Sign up</a>
         </Link>
-      </S.FormLink>
+      </FormLink>
     </form>
-  </S.WrapperFormSignIn>
+  </FormWrapper>
 );
