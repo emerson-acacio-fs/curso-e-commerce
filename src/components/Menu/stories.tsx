@@ -9,7 +9,7 @@ const data = {
 
 export default data;
 
-export const Mobile: Story = (args) => <Menu {...args} />;
+export const Mobile: Story<MenuProps> = (args) => <Menu {...args} />;
 
 export const Desktop: Story<MenuProps> = (args) => <Menu {...args} />;
 
