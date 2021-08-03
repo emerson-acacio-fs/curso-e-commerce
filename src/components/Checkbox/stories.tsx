@@ -18,7 +18,7 @@ const data = {
 
 export default data;
 
-export const Defoult: Story<CheckboxProps> = (args) => (
+export const Default: Story<CheckboxProps> = (args) => (
   <>
     <div style={{padding: 10}}>
       <Checkbox

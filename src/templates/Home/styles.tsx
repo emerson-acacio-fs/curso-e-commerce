@@ -1,30 +1,7 @@
 import styled, {css} from 'styled-components';
 import * as HeadingStyles from '../../components/Heading/styles';
-import * as GameCardSliderStyles from '../../components/GameCardSlider/styles';
 import * as HighlightStyles from '../../components/Highlight/styles';
 import media from 'styled-media-query';
-
-const Section = styled.section`
-  ${({theme}) => css`
-    ${HighlightStyles.WrapperHighlight},
-    ${HeadingStyles.WrapperHeading},
-    ${GameCardSliderStyles.WrapperGameCardSlider} {
-      margin-bottom: ${theme.spacings.medium};
-    }
-    ${HighlightStyles.WrapperHighlight} {
-      ${media.lessThan('medium')`
-        margin-right: calc(-${theme.grid.gutter} / 2);
-        margin-left: calc(-${theme.grid.gutter} / 2);
-      `}
-    }
-    ${GameCardSliderStyles.WrapperGameCardSlider} {
-      ${media.lessThan('huge')`
-          margin-right: calc(-${theme.grid.gutter} / 2);
-      `}
-    }
-    margin-bottom: calc(${theme.spacings.large} * 2);
-  `}
-`;
 
 export const SectionBanner = styled.section`
   ${({theme}) => css`
@@ -37,7 +14,7 @@ export const SectionBanner = styled.section`
     `}
   `}
 `;
-export const SectionNews = styled(Section)`
+export const SectionNews = styled.div`
   ${({theme}) => css`
     margin-bottom: calc(${theme.spacings.xxlarge} * 2);
     ${media.greaterThan('large')`
@@ -55,26 +32,11 @@ export const SectionNews = styled(Section)`
     `}
   `}
 `;
-export const SectionMostPopular = styled(Section)``;
-export const SectionUpcoming = styled(Section)`
+
+export const SectionUpcoming = styled.div`
   ${({theme}) => css`
     ${HighlightStyles.WrapperHighlight} {
       margin-top: calc(${theme.spacings.xlarge} * 2);
     }
-  `}
-`;
-export const SectionFreeGames = styled(Section)``;
-
-export const SectionFooter = styled.section`
-  ${({theme}) => css`
-    margin-top: ${theme.spacings.large};
-    padding-bottom: ${theme.spacings.xsmall};
-    padding-top: ${theme.spacings.xxlarge};
-    background-color: ${theme.colors.white};
-    clip-path: polygon(0 5%, 100% 0%, 100% 100%, 0 100%);
-    ${media.greaterThan('medium')`
-      padding-top: calc(${theme.spacings.xxlarge} * 2);
-      clip-path: polygon(0 15%, 100% 0%, 100% 100%, 0 100%);
-    `}
   `}
 `;

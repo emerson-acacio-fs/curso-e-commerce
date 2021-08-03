@@ -17,7 +17,7 @@ const data = {
 
 export default data;
 
-export const Defoult: Story<RibbonProps> = (args) => (
+export const Default: Story<RibbonProps> = (args) => (
   <div
     style={{
       width: '40rem',

@@ -17,9 +17,9 @@ const data = {
 
 export default data;
 
-export const Defoult: Story = (args) => <Button {...args} />;
+export const Default: Story = (args) => <Button {...args} />;
 
-Defoult.args = {
+Default.args = {
   children: 'Bay now',
 };
 export const withIcon: Story = (args) => <Button {...args} />;

@@ -20,7 +20,7 @@ const data = {
 
 export default data;
 
-export const Defoult: Story<TextFieldProps> = (args) => (
+export const Default: Story<TextFieldProps> = (args) => (
   <div style={{maxWidth: 300, padding: 15}}>
     <TextField {...args} />
   </div>
