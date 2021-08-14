@@ -1,3 +1,4 @@
+import {forwardRef} from 'react';
 import SlickSlider, {Settings} from 'react-slick';
 import * as S from './styles';
 
@@ -8,8 +9,15 @@ export type SliderProps = {
   settings: SliderSettings;
 };
 
-export const Slider = ({children, settings}: SliderProps) => (
+const SliderOnly: React.ForwardRefRenderFunction<SlickSlider, SliderProps> = (
+  {children, settings},
+  ref,
+) => (
   <S.WrapperSlider>
-    <SlickSlider {...settings}>{children}</SlickSlider>
+    <SlickSlider ref={ref} {...settings}>
+      {children}
+    </SlickSlider>
   </S.WrapperSlider>
 );
+
+export const Slider = forwardRef(SliderOnly);

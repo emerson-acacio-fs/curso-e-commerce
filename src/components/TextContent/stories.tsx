@@ -1,5 +1,4 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
-
 import {TextContent, TextContentProps} from '.';
 import textMock from './mock';
 
