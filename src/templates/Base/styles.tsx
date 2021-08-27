@@ -21,3 +21,10 @@ export const Wrapper = styled.div`
   height: 100vh;
   justify-content: space-between;
 `;
+
+export const Content = styled.div`
+  ${({theme}) => css`
+    margin-top: ${theme.spacings.xlarge};
+    flex: 1 0 auto;
+  `}
+`;
