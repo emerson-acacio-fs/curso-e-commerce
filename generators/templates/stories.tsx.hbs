@@ -1,6 +1,6 @@
 import {Meta, Story} from '@storybook/react/types-6-0';
 
-import { {{pascalCase name}} } from '.';
+import { {{pascalCase name}} ,{{pascalCase name}}Props} from '.';
 
 const data = {
   title: '{{{pascalCase name}}}',
@@ -10,5 +10,5 @@ const data = {
 
 export default data;
 
-export const Default: Story = (args) => <{{{pascalCase name}}} {...args} />;
+export const Default: Story<{{pascalCase name}}Props>  = (args) => <{{{pascalCase name}}} {...args} />;
 
