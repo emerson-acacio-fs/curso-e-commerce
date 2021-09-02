@@ -9,6 +9,7 @@ const data = {
   args: {
     items: mockItems,
     total: 'R$ 330,00',
+    hasButton: true,
   },
   argTypes: {
     items: {
@@ -27,5 +28,11 @@ export default data;
 export const Default: Story<CartListProps> = (args) => (
   <div style={{maxWidth: 800}}>
     <CartList {...args} />
+  </div>
+);
+
+export const Empty: Story<CartListProps> = (args) => (
+  <div style={{maxWidth: 800}}>
+    <CartList />
   </div>
 );

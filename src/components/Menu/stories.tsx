@@ -13,6 +13,8 @@ export const Mobile: Story<MenuProps> = (args) => <Menu {...args} />;
 
 export const Desktop: Story<MenuProps> = (args) => <Menu {...args} />;
 
+export const logged: Story<MenuProps> = (args) => <Menu {...args} />;
+
 Mobile.parameters = {
   layout: 'fullscreen',
   backgrounds: {
@@ -27,4 +29,14 @@ Desktop.parameters = {
   backgrounds: {
     default: 'won-dark',
   },
+};
+
+logged.parameters = {
+  layout: 'fullscreen',
+  backgrounds: {
+    default: 'won-dark',
+  },
+};
+logged.args = {
+  username: 'Emerson',
 };

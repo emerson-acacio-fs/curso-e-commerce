@@ -1,13 +1,32 @@
 import styled, {css} from 'styled-components';
 import {tint} from 'polished';
 import media from 'styled-media-query';
+import {WrapperEmpty, Image, Title, Description} from 'components/Empty/styles';
 
-export const WrapperCartList = styled.div`
-  ${({theme}) => css`
+type WrapperProps = {isEmpty: boolean};
+
+export const WrapperCartList = styled.div<WrapperProps>`
+  ${({theme, isEmpty}) => css`
     background: ${theme.colors.white};
     display: flex;
     flex-direction: column;
     align-self: start;
+    ${isEmpty &&
+    css`
+      ${WrapperEmpty} {
+        padding-bottom: ${theme.spacings.medium};
+      }
+      ${Image} {
+        max-width: 20rem;
+      }
+      ${Title} {
+        font-size: ${theme.font.sizes.large};
+      }
+      ${Description} {
+        color: ${theme.colors.black};
+        font-size: ${theme.font.sizes.medium};
+      }
+    `}
   `}
 `;
 
@@ -19,6 +38,7 @@ export const Footer = styled.div`
     font-size: ${theme.font.sizes.small};
     padding: 2rem;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.medium};
