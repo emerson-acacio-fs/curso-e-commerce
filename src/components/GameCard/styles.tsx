@@ -66,7 +66,7 @@ export const FavButton = styled.div`
   ${({theme}) => css`
     color: ${theme.colors.primary};
     position: absolute;
-    right: 0;
+    right: -1rem;
     top: -0.5rem;
     cursor: pointer;
     svg {
@@ -121,5 +121,6 @@ export const Content = styled.div`
     position: relative;
     height: 100%;
     margin: ${theme.spacings.xsmall};
+    min-height: 10.5rem;
   `}
 `;

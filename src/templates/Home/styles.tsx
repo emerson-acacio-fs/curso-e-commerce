@@ -32,11 +32,3 @@ export const SectionNews = styled.div`
     `}
   `}
 `;
-
-export const SectionUpcoming = styled.div`
-  ${({theme}) => css`
-    ${HighlightStyles.WrapperHighlight} {
-      margin-top: calc(${theme.spacings.xlarge} * 2);
-    }
-  `}
-`;
