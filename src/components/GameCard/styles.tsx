@@ -12,7 +12,7 @@ export const WrapperGameCard = styled.article`
 `;
 
 export const ImageBox = styled.a`
-  height: 14rem;
+  height: 17rem;
   width: 100%;
   background: #f6f7f8;
   background-image: linear-gradient(
@@ -80,7 +80,7 @@ export const BuyBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-top: ${theme.spacings.xxsmall};
+    margin-top: ${theme.spacings.xsmall};
   `}
 `;
 
@@ -99,7 +99,7 @@ const priceModifiers = {
   promotional: (theme: DefaultTheme) => css`
     color: ${theme.colors.gray};
     text-decoration: line-through;
-    margin-right: ${theme.spacings.xsmall};
+    margin-right: ${theme.spacings.small};
   `,
 };
 export const Price = styled.div<PriceProps>`
@@ -119,8 +119,8 @@ export const Content = styled.div`
     flex-direction: column;
     justify-content: space-between;
     position: relative;
-    height: 100%;
+    /* height: 10%; */
     margin: ${theme.spacings.xsmall};
-    min-height: 10.5rem;
+    min-height: 9.8rem;
   `}
 `;

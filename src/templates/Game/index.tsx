@@ -11,10 +11,12 @@ import * as S from './styles';
 
 export type GameTemplateProps = {
   cover: string;
+  recommendedTitle: string;
   gameInfo: GameInfoProps;
   gallery?: GalleryImageProps[];
   description: string;
   details: GameDetailsProps;
+  upcomingTitle: string;
   upcomingGames: GameCardProps[];
   upcomingHighlight: HighlightProps;
   recommendedGames: GameCardProps[];
@@ -26,9 +28,11 @@ export const Game = ({
   gallery,
   description,
   details,
+  upcomingTitle,
   upcomingGames,
   upcomingHighlight,
   recommendedGames,
+  recommendedTitle,
 }: GameTemplateProps) => (
   <Base>
     <S.Cover src={cover} role="image" aria-label="cover" />
@@ -47,12 +51,12 @@ export const Game = ({
         <Divider />
       </S.SectionGameDetails>
       <Showcase
-        title=" Upcoming"
+        title={upcomingTitle}
         games={upcomingGames}
         highlight={upcomingHighlight}
       />
 
-      <Showcase title="You may like these games" games={recommendedGames} />
+      <Showcase title={recommendedTitle} games={recommendedGames} />
     </S.Main>
   </Base>
 );
