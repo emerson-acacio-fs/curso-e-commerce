@@ -2,10 +2,8 @@ import styled, {css} from 'styled-components';
 import {RadioProps} from '.';
 
 export const WrapperRadio = styled.div`
-  ${({theme}) => css`
-    display: flex;
-    align-items: center;
-  `}
+  display: flex;
+  align-items: center;
 `;
 
 export const Input = styled.input`

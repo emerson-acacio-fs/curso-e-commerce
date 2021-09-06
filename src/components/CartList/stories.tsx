@@ -31,7 +31,7 @@ export const Default: Story<CartListProps> = (args) => (
   </div>
 );
 
-export const Empty: Story<CartListProps> = (args) => (
+export const Empty: Story<CartListProps> = () => (
   <div style={{maxWidth: 800}}>
     <CartList />
   </div>

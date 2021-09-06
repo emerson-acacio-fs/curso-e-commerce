@@ -1,7 +1,5 @@
 import styled, {css} from 'styled-components';
 
-const wrapperModifiers = {a: 1};
-
 export const WrapperEmpty = styled.div`
   display: flex;
   flex-direction: column;

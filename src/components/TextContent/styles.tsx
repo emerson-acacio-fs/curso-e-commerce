@@ -2,8 +2,6 @@ import styled, {css} from 'styled-components';
 import * as HeadingStyles from 'components/Heading/styles';
 import media from 'styled-media-query';
 
-const wrapperModifiers = {a: 1};
-
 export const WrapperTextContent = styled.div`
   ${({theme}) => css`
     color: ${theme.colors.white};

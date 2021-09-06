@@ -10,7 +10,7 @@ import {
 import {GetStaticProps} from 'next';
 import {QueryRecommended} from 'graphql/generated/QueryRecommended';
 import {QUERY_RECOMMENDED} from 'graphql/queries/QueryRecommended';
-import {gamesMapper, highlightMapper} from 'utils/mappers';
+import {gamesMapper, highlightMapper} from 'utils/mappers/mappers';
 import {
   QueryUpcoming,
   QueryUpcomingVariables,
@@ -47,6 +47,7 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   >({
     query: QUERY_GAME_BY_SLUG,
     variables: {slug: `${params?.slug}`},
+    fetchPolicy: 'no-cache',
   });
 
   if (!data.games.length) {
@@ -67,8 +68,8 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
   >({query: QUERY_UPCOMING, variables: {date: '2021-01-29'}});
 
   return {
+    revalidate: 60,
     props: {
-      revalidate: 60,
       cover: `http://localhost:1337${game.cover?.src}`,
       gameInfo: {
         title: game.name,
