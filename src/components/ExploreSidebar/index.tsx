@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import xor from 'lodash.xor';
 import {Button} from 'components/Button';
 import {Checkbox} from 'components/Checkbox';
 import {Heading} from 'components/Heading';
@@ -6,6 +7,7 @@ import {Radio} from 'components/Radio';
 import {Close} from '@styled-icons/material-outlined/Close';
 import {FilterList} from '@styled-icons/material-outlined/FilterList';
 import * as S from './styles';
+import {ParsedUrlQueryInput} from 'querystring';
 
 export type ItemProps = {
   title: string;
@@ -19,9 +21,7 @@ type Field = {
   name: string;
 };
 
-type Values = {
-  [field: string]: boolean | string;
-};
+type Values = ParsedUrlQueryInput;
 
 export type ExploreSidebarProps = {
   items: ItemProps[];
@@ -37,13 +37,28 @@ export const ExploreSidebar = ({
   const [values, setValues] = useState(initialValues);
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleFilter = () => {
+  useEffect(() => {
     onFilter(values);
+    // this method comes from another template
+    // that we don't have access
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values]);
+
+  const handleFilterMenu = () => {
     setIsOpen(false);
   };
 
-  const handelChange = (name: string, value: boolean | string) => {
+  const handleRadio = (name: string, value: string | boolean) => {
     setValues((s) => ({...s, [name]: value}));
+  };
+
+  // []
+  // ['windows']
+  // ['windows', 'linux']
+
+  const handleCheckbox = (name: string, value: string) => {
+    const currentList = (values[name] as []) || [];
+    setValues((s) => ({...s, [name]: xor(currentList, [value])}));
   };
 
   return (
@@ -60,34 +75,34 @@ export const ExploreSidebar = ({
               {title}
             </Heading>
             {type === 'checkbox' &&
-              fields.map((fild) => (
+              fields.map((field) => (
                 <Checkbox
-                  key={fild.name}
-                  name={fild.name}
-                  label={fild.label}
-                  labelFor={fild.name}
-                  isChecked={!!values[fild.name]}
-                  onCheck={(v) => handelChange(fild.name, v)}
+                  key={field.name}
+                  name={field.name}
+                  label={field.label}
+                  labelFor={field.name}
+                  isChecked={(values[name] as string[])?.includes(field.name)}
+                  onCheck={() => handleCheckbox(name, field.name)}
                 />
               ))}
             {type === 'radio' &&
-              fields.map((fild) => (
+              fields.map((field) => (
                 <Radio
-                  key={fild.name}
-                  id={fild.name}
+                  key={field.name}
+                  id={field.name}
                   name={name}
-                  label={fild.label}
-                  labelFor={fild.name}
-                  value={fild.name}
-                  defaultChecked={fild.name === values[name]}
-                  onChange={() => handelChange(name, fild.name)}
+                  label={field.label}
+                  labelFor={field.name}
+                  value={field.name}
+                  defaultChecked={String(field.name) === String(values[name])}
+                  onChange={() => handleRadio(name, field.name)}
                 />
               ))}
           </S.Items>
         ))}
       </S.Content>
       <S.Footer>
-        <Button fullWidth size="medium" onClick={handleFilter}>
+        <Button fullWidth size="medium" onClick={handleFilterMenu}>
           Filter
         </Button>
       </S.Footer>

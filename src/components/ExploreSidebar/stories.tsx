@@ -10,7 +10,11 @@ const data = {
       default: 'won-dark',
     },
   },
-  args: {items: mock, initialValues: {windows: true, sort_by: 'low-to-high'}},
+  args: {
+    items: mock,
+    initialValues: {platforms: ['windows', 'linux'], sort_by: 'low-to-high'},
+    onFilter: () => console.log('filter'),
+  },
 } as Meta;
 
 export default data;
