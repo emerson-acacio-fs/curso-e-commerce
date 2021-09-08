@@ -1,7 +1,7 @@
 import 'match-media-mock';
 import {screen} from '@testing-library/react';
 import {Profile} from '.';
-import {renderWithTheme} from '../../utils/tests/helpers';
+import {render} from 'utils/test-utils';
 
 jest.mock('next/router', () => ({
   useRouter: jest.fn(() => ({asPath: '/profile/me'})),
@@ -30,7 +30,7 @@ jest.mock('components/ProfileMenu', () => ({
 
 describe('<Profile />', () => {
   it('should render sections', () => {
-    renderWithTheme(<Profile>Lorem Ipsum</Profile>);
+    render(<Profile>Lorem Ipsum</Profile>);
 
     expect(screen.getByText('Lorem Ipsum')).toBeInTheDocument();
     expect(screen.getByText('My profile')).toBeInTheDocument();

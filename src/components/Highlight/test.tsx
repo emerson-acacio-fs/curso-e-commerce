@@ -1,6 +1,6 @@
 import {screen} from '@testing-library/react';
 import {Highlight} from '.';
-import {renderWithTheme} from '../../utils/tests/helpers';
+import {render} from 'utils/test-utils';
 import * as S from './styles';
 
 const props = {
@@ -13,7 +13,7 @@ const props = {
 
 describe('<Highlight />', () => {
   it('should render  headings and button', () => {
-    renderWithTheme(<Highlight {...props} />);
+    render(<Highlight {...props} />);
 
     expect(
       screen.getByRole('heading', {name: /heading 1/i}),
@@ -24,21 +24,21 @@ describe('<Highlight />', () => {
     expect(screen.getByRole('link', {name: /buy now/i})).toBeInTheDocument();
   });
   it('should render  a backgound image', () => {
-    const {container} = renderWithTheme(<Highlight {...props} />);
+    const {container} = render(<Highlight {...props} />);
 
     expect(container.firstChild).toHaveStyle({
       backgroundImage: `url(${props.backgroundImage})`,
     });
   });
   it('should render  float image', () => {
-    renderWithTheme(<Highlight {...props} floatImage="/float-image.png" />);
+    render(<Highlight {...props} floatImage="/float-image.png" />);
     expect(screen.getByRole('img', {name: props.title})).toHaveAttribute(
       'src',
       '/float-image.png',
     );
   });
   it('should render align right by default', () => {
-    const {container} = renderWithTheme(
+    const {container} = render(
       <Highlight {...props} floatImage="/float-image.png" />,
     );
     expect(container.firstChild).toHaveStyleRule('text-align', 'right', {
@@ -50,7 +50,7 @@ describe('<Highlight />', () => {
     );
   });
   it('should render align right by default', () => {
-    const {container} = renderWithTheme(
+    const {container} = render(
       <Highlight {...props} alignment="left" floatImage="/float-image.png" />,
     );
     expect(container.firstChild).toHaveStyleRule(

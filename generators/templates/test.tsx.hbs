@@ -1,10 +1,10 @@
 import {screen} from '@testing-library/react';
 import { {{{pascalCase name}}} } from '.';
-import {renderWithTheme} from '../../utils/tests/helpers';
+import {render} from 'utils/test-utils';
 
 describe('<{{{pascalCase name}}} />', () => {
   it('should render a white label by dfault', () => {
-    renderWithTheme(<{{{pascalCase name}}} />);
+    render(<{{{pascalCase name}}} />);
     expect(screen.getByLabelText(/Won Games/i).parentElement).toHaveStyle({
       color: '#FAFAFA',
     });

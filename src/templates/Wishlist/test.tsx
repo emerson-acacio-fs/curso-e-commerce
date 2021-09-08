@@ -1,6 +1,6 @@
 import {screen} from '@testing-library/react';
 import {Wishlist} from '.';
-import {renderWithTheme} from '../../utils/tests/helpers';
+import {render} from 'utils/test-utils';
 
 import gamesMock from 'components/GameCardSlider/mock';
 import highlightMock from 'components/Highlight/mock';
@@ -21,7 +21,7 @@ jest.mock('components/Showcase', () => ({
 
 describe('<Wishlist />', () => {
   it('should render correctly', () => {
-    renderWithTheme(<Wishlist {...props} />);
+    render(<Wishlist {...props} />);
 
     expect(
       screen.getByRole('heading', {name: /wishlist/i}),

@@ -1,6 +1,6 @@
 import {screen} from '@testing-library/react';
 import {GameItem} from '.';
-import {renderWithTheme} from '../../utils/tests/helpers';
+import {render} from 'utils/test-utils';
 
 const props = {
   img: 'https://source.unsplash.com/user/willianjusten/151x70',
@@ -10,7 +10,7 @@ const props = {
 
 describe('<GameItem />', () => {
   it('should render the item', () => {
-    renderWithTheme(<GameItem {...props} />);
+    render(<GameItem {...props} />);
 
     expect(
       screen.getByRole('heading', {name: props.title}),
@@ -26,7 +26,7 @@ describe('<GameItem />', () => {
   it('should render the item with download link', () => {
     const downloadLink = 'https://link';
 
-    renderWithTheme(<GameItem {...props} downloadLink={downloadLink} />);
+    render(<GameItem {...props} downloadLink={downloadLink} />);
 
     expect(
       screen.getByRole('link', {name: `Get ${props.title} here`}),
