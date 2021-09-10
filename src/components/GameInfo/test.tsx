@@ -3,6 +3,7 @@ import {GameInfo} from '.';
 import {render} from 'utils/test-utils';
 
 const props = {
+  id: '1',
   title: 'My Game Title',
   description: 'Game Description',
   price: 210,
