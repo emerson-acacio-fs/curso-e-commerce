@@ -2,15 +2,11 @@ import {tint} from 'polished';
 import styled, {css, DefaultTheme} from 'styled-components';
 import * as ButtonStyles from 'components/Button/styles';
 
-export const WrapperPaymentOptions = styled.div`
-  ${({theme}) =>
-    css`
-      background: ${theme.colors.white};
-    `}
-`;
+export const WrapperPaymentOptions = styled.div``;
 
 export const Body = styled.div`
   ${({theme}) => css`
+    background: ${theme.colors.white};
     padding: ${theme.spacings.small};
   `}
 `;
