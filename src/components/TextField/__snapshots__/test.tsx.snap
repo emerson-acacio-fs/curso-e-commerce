@@ -26,6 +26,12 @@ exports[`<TextField /> Renders with error 1`] = `
   width: 100%;
 }
 
+.c8:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 2.4rem #EAEAEA inset;
+  -webkit-filter: none;
+  filter: none;
+}
+
 .c2 {
   font-size: 1.4rem;
   color: #030517;
@@ -75,7 +81,7 @@ exports[`<TextField /> Renders with error 1`] = `
 >
   <label
     class="c1 c2"
-    for="TextField"
+    for=""
   >
     TextField
   </label>
@@ -105,8 +111,8 @@ exports[`<TextField /> Renders with error 1`] = `
     </div>
     <input
       class="c8"
-      id="TextField"
-      name="TextField"
+      id=""
+      name=""
       type="text"
       value=""
     />
