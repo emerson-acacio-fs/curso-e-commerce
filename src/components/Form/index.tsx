@@ -4,6 +4,17 @@ import {darken} from 'polished';
 import * as TextFieldStyles from 'components/TextField/styles';
 import * as ButtonStyles from 'components/Button/styles';
 
+export const FormError = styled.div`
+  ${({theme}) => css`
+    text-align: center;
+    color: red;
+    font-size: ${theme.font.sizes.small};
+    svg {
+      width: 1.6rem;
+    }
+  `}
+`;
+
 export const FormWrapper = styled.div`
   ${({theme}) => css`
     ${TextFieldStyles.WrapperTextField} {

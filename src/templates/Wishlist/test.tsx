@@ -12,6 +12,13 @@ const props = {
   recommendedTitle: 'You may like these games',
 };
 
+jest.mock('templates/Base', () => ({
+  __esModule: true,
+  Base: function Mock({children}: {children: React.ReactNode}) {
+    return <div data-testid="Mock Base">{children}</div>;
+  },
+}));
+
 jest.mock('components/Showcase', () => ({
   __esModule: true,
   Showcase: function Mock() {

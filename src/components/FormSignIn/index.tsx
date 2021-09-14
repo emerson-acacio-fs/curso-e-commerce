@@ -1,15 +1,18 @@
 import {useState} from 'react';
 import {useRouter} from 'next/router';
 import Link from 'next/link';
-import {Email, Lock} from '@styled-icons/material-outlined';
+import {Email, Lock, ErrorOutline} from '@styled-icons/material-outlined';
 import {TextField} from '../TextField';
 import * as S from './styles';
 import {Button} from '../Button';
-import {FormLink, FormLoading, FormWrapper} from 'components/Form';
+import {FormError, FormLink, FormLoading, FormWrapper} from 'components/Form';
 import {signIn} from 'next-auth/client';
+import {FieldErrors, signInValidate} from 'utils/validations';
 
 export const FormSignIn = () => {
-  const [values, setValues] = useState({});
+  const [formError, setFormError] = useState('');
+  const [fieldError, setFieldError] = useState<FieldErrors>({});
+  const [values, setValues] = useState({email: '', password: ''});
   const [loading, setLoading] = useState(false);
   const {push} = useRouter();
 
@@ -20,6 +23,16 @@ export const FormSignIn = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setLoading(true);
+    const errors = signInValidate(values);
+
+    if (Object.keys(errors).length) {
+      setFieldError(errors);
+      setLoading(false);
+      return;
+    }
+
+    setFieldError({});
+
     // sign in
     const result = await signIn('credentials', {
       ...values,
@@ -32,16 +45,22 @@ export const FormSignIn = () => {
     }
     setLoading(false);
     // jogar o erro
-    console.error('email ou senha inválida');
+    setFormError('username or password is invalid');
   };
 
   return (
     <FormWrapper>
+      {!!formError && (
+        <FormError>
+          <ErrorOutline /> {formError}
+        </FormError>
+      )}
       <form onSubmit={handleSubmit}>
         <TextField
           name="email"
           placeholder="Email"
           type="email"
+          error={fieldError?.email}
           onInputChange={(v) => handleInput('email', v)}
           icon={<Email />}
         />
@@ -49,6 +68,7 @@ export const FormSignIn = () => {
           name="password"
           placeholder="Password"
           type="password"
+          error={fieldError?.password}
           onInputChange={(v) => handleInput('password', v)}
           icon={<Lock />}
         />
