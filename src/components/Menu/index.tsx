@@ -14,21 +14,20 @@ import {UserDropdown} from 'components/UserDropdown';
 
 export type MenuProps = {
   username?: string | null;
+  loading?: boolean;
 };
 
-export const Menu = ({username}: MenuProps) => {
+export const Menu = ({username, loading}: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <S.WrapperMenu>
       <MediaMatch lessThan="medium">
-        <S.IconWrapper
-          onClick={() => {
-            setIsOpen(true);
-          }}>
+        <S.IconWrapper onClick={() => setIsOpen(true)}>
           <MenuIcon aria-label="Open Menu" />
         </S.IconWrapper>
       </MediaMatch>
+
       <S.LogoWrapper>
         <Link href="/" passHref>
           <a>
@@ -36,6 +35,7 @@ export const Menu = ({username}: MenuProps) => {
           </a>
         </Link>
       </S.LogoWrapper>
+
       <MediaMatch greaterThan="medium">
         <S.MenuNav>
           <Link href="/" passHref>
@@ -46,74 +46,77 @@ export const Menu = ({username}: MenuProps) => {
           </Link>
         </S.MenuNav>
       </MediaMatch>
-      <S.MenuGoup>
-        <S.IconWrapper>
-          <SearchIcon aria-label="Search" />
-        </S.IconWrapper>
-        <S.IconWrapper>
-          <MediaMatch greaterThan="medium">
-            <CartDropdown />
-          </MediaMatch>
-          <MediaMatch lessThan="medium">
-            <Link href="/cart">
-              <a>
-                <CartIcon />
-              </a>
-            </Link>
-          </MediaMatch>
-        </S.IconWrapper>
-        <MediaMatch greaterThan="medium">
-          {!username ? (
-            <Link href="/sign-in" passHref>
-              <Button>Sign in</Button>
-            </Link>
-          ) : (
-            <UserDropdown username={username} />
-          )}
-        </MediaMatch>
-      </S.MenuGoup>
-      <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
-        <CloseIcon
-          aria-label="Close Menu"
-          onClick={() => {
-            setIsOpen(false);
-          }}
-        />
-        <S.MenuNav>
-          <Link href="/" passHref>
-            <S.MenuLink>Home</S.MenuLink>
-          </Link>
-          <Link href="/games" passHref>
-            <S.MenuLink>Explore</S.MenuLink>
-          </Link>
-          {username && (
-            <>
-              <Link href="/profile/me" passHref>
-                <S.MenuLink>My profile</S.MenuLink>
-              </Link>
-              <Link href="/profile/wishlist" passHref>
-                <S.MenuLink>Wishlist</S.MenuLink>
-              </Link>
-            </>
-          )}
-        </S.MenuNav>
 
-        {!username && (
-          <S.RegisterBox>
-            <Link href="/sign-in" passHref>
-              <Button as="a" fullWidth size="large">
-                Sign in
-              </Button>
-            </Link>
-            <span>or</span>
-            <Link href="/sign-up" passHref>
-              <S.CreateAcount href="#" title="Sign Up">
-                Sign Up
-              </S.CreateAcount>
-            </Link>
-          </S.RegisterBox>
-        )}
-      </S.MenuFull>
+      {!loading && (
+        <>
+          <S.MenuGroup>
+            <S.IconWrapper>
+              <SearchIcon aria-label="Search" />
+            </S.IconWrapper>
+            <S.IconWrapper>
+              <MediaMatch greaterThan="medium">
+                <CartDropdown />
+              </MediaMatch>
+              <MediaMatch lessThan="medium">
+                <Link href="/cart">
+                  <a>
+                    <CartIcon />
+                  </a>
+                </Link>
+              </MediaMatch>
+            </S.IconWrapper>
+            <MediaMatch greaterThan="medium">
+              {!username ? (
+                <Link href="/sign-in" passHref>
+                  <Button as="a">Sign in</Button>
+                </Link>
+              ) : (
+                <UserDropdown username={username} />
+              )}
+            </MediaMatch>
+          </S.MenuGroup>
+
+          <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
+            <CloseIcon
+              aria-label="Close Menu"
+              onClick={() => setIsOpen(false)}
+            />
+            <S.MenuNav>
+              <Link href="/" passHref>
+                <S.MenuLink>Home</S.MenuLink>
+              </Link>
+              <Link href="/games" passHref>
+                <S.MenuLink>Explore</S.MenuLink>
+              </Link>
+
+              {!!username && (
+                <>
+                  <Link href="/profile/me" passHref>
+                    <S.MenuLink>My profile</S.MenuLink>
+                  </Link>
+                  <Link href="/wishlist" passHref>
+                    <S.MenuLink>Wishlist</S.MenuLink>
+                  </Link>
+                </>
+              )}
+            </S.MenuNav>
+
+            {!username && (
+              <S.RegisterBox>
+                <Link href="/sign-in" passHref>
+                  <Button fullWidth size="large" as="a">
+                    Sign in
+                  </Button>
+                </Link>
+                <span>or</span>
+                <Link href="/sign-up" passHref>
+                  <S.CreateAcount title="Sign Up">Sign Up</S.CreateAcount>
+                </Link>
+              </S.RegisterBox>
+            )}
+          </S.MenuFull>
+        </>
+      )}
     </S.WrapperMenu>
   );
 };
