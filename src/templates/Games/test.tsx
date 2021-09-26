@@ -1,3 +1,4 @@
+import 'session.mock';
 import {screen} from '@testing-library/react';
 import {GamesTemplate} from '.';
 import {render} from 'utils/test-utils';

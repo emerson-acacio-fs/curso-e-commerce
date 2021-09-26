@@ -1,7 +1,7 @@
+import 'session.mock';
 import {screen} from '@testing-library/react';
 import {GameInfo} from '.';
 import {render} from 'utils/test-utils';
-
 const props = {
   id: '1',
   title: 'My Game Title',
@@ -27,6 +27,8 @@ describe('<GameInfo />', () => {
     expect(
       screen.getByRole('button', {name: /add to cart/i}),
     ).toBeInTheDocument();
-    expect(screen.getByRole('button', {name: /wishlist/i})).toBeInTheDocument();
+    expect(
+      screen.getByRole('button', {name: /add to wishlist/i}),
+    ).toBeInTheDocument();
   });
 });

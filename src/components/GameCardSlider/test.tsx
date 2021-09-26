@@ -1,3 +1,4 @@
+import 'session.mock';
 import '../../../.jest/match-media-mock';
 import {screen} from '@testing-library/react';
 import {GameCardSlider} from '.';

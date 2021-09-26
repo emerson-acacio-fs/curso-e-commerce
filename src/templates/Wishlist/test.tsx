@@ -1,7 +1,7 @@
+import 'session.mock';
 import {screen} from '@testing-library/react';
 import {Wishlist} from '.';
 import {render} from 'utils/test-utils';
-
 import gamesMock from 'components/GameCardSlider/mock';
 import highlightMock from 'components/Highlight/mock';
 
