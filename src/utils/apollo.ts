@@ -18,9 +18,9 @@ function createApolloClient(session?: Session | null) {
   });
 
   return new ApolloClient({
+    ssrMode: typeof window === 'undefined',
     link: authLink.concat(httpLink),
     cache: apolloCache,
-    ssrMode: typeof window === 'undefined',
   });
 }
 
@@ -28,12 +28,20 @@ export function initializeApollo(
   initialState = null,
   session?: Session | null,
 ) {
+  // serve para verificar se já existe uma instância, para não criar outra
   const apolloClientGlobal = apolloClient ?? createApolloClient(session);
+
+  // se a página usar o apolloClient no lado client
+  // hidratamos o estado inicial aqui
   if (initialState) {
     apolloClientGlobal.cache.restore(initialState);
   }
+
+  // sempre inicializando no SSR com cache limpo
   if (typeof window === 'undefined') return apolloClientGlobal;
+  // cria o apolloClient se estiver no client side
   apolloClient = apolloClient ?? apolloClientGlobal;
+
   return apolloClient;
 }
 
